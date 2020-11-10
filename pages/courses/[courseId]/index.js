@@ -7,10 +7,10 @@ import {info} from '../../../components/logger';
 
 const CoursePage = ({course}) => {
 
-  console.log("courses/[courseId]/index.js", "CoursePage", course)
+  // console.log("courses/[courseId]/index.js", "CoursePage", course)
 
   if (!course) {
-    console.log("courses/[courseId]/index.js", "CoursePage", "Course not passed in params!")
+    console.error("courses/[courseId]/index.js", "CoursePage", "Course not passed in params!")
   }
   // get the query parameter.
   // const {query} = useRouter();
@@ -19,14 +19,26 @@ const CoursePage = ({course}) => {
   //console.log(query)
   // const course = CourseData[courseId];
 
+  if (!course) {
+    return <div>Course not found</div>
+  }
+
   return (<div>
-      <div>Courses Index Page for Course </div>
+      
+      {course && <div>Course Index Page:: {course.title}</div>}
       <div>
         List all lessons in this course...
-
+        
+        <pre>{JSON.stringify(Object.values(course.lessons), null, 2)}</pre>
+        
         <ul>
-
+          {Object.values(course.lessons).map((lesson, index) => (
+           <li key={index}><Link href={`/courses/${course.filePath}/${lesson.filePath}`}><a>{lesson.title}</a></Link></li>
+          ))}
         </ul>
+
+        {!course.lessons && <div>No lessons found</div>}
+        {course.lessons && <div> {Object.values(course.lessons).length} Lessons found</div>}
       </div>
       
     </div>)
@@ -36,9 +48,8 @@ const CoursePage = ({course}) => {
 // if there is server data, generate it.
 export async function getStaticProps ({params : {courseId}}) {
 
-  info("[courses]/[courseId]/index.js::getStaticProps",  "courseId" + courseId)
-  // console.log("[courses]/[courseId]/", "getStaticProps", "courseId", courseId)
-  // console.log(`[getStaticProps]::Running for ${id}`);
+  // info("[courses]/[courseId]/index.js::getStaticProps",  `courseId ${courseId}`)
+  
   // const data = {};
 
   // const source = fs.readFileSync(path.join(process.cwd(), 'posts', slug + '.mdx'));
@@ -55,11 +66,7 @@ export async function getStaticProps ({params : {courseId}}) {
   } 
   
   return { props: { 
-      course,
-      // lessons,
-      // source: 'Test Data', //mdxSource, 
-      // frontMatter: '', // data, 
-      // slug 
+      course
     } 
   };
 } 
@@ -70,19 +77,19 @@ export async function getStaticProps ({params : {courseId}}) {
 
 export async function getStaticPaths () {
 
-  info(`courses/[courseId]/index.js::[getStaticPaths]', 'Building list of valid paths`);
+  // info(`courses/[courseId]/index.js::[getStaticPaths]`, `Building list of valid paths`);
   
   //const courses = fs.readdirSync('courses');
   
   
   
-  // const paths = Object.keys(CourseData).map(
-  //   (courseId) => ({params: {courseId}})
-  //   );
+  const paths = Object.keys(CourseData).map(
+    (courseId) => ({params: {courseId}})
+    );
 
   // 
 
-  const paths = [{params : {courseId : '8-networks'}}]
+  // const paths = [{params : {courseId : '8-networks'}}]
 
   info("courses/[courseId]/index.js::getStaticPaths", paths);
 

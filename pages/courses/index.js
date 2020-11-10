@@ -4,15 +4,15 @@ import Link from 'next/link';
 // server side data...
 import CourseData from '../../components/course-data';
 
-const LessonsIndex = ({paths}) => {
+const LessonsIndex = ({courses}) => {
 
   return (
     <div>Key Points:
       <div>Available Courses:</div>
       <div>
-  {paths.map((path, index) => <div key={index}>
+  {courses.map((path, index) => <div key={index}>
       <Link href={`courses/${path}`}>
-          <a>{path}</a>
+          <a>Course: {path}</a>
         </Link>
       </div>)}
       </div>
@@ -26,7 +26,7 @@ const LessonsIndex = ({paths}) => {
 
     return {
       props: {
-        paths: courses.map((course) => course)
+        courses: courses.map((course) => course)
       }
     }
   }

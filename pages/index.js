@@ -45,8 +45,7 @@ export async function getStaticProps () {
 
   const courses = ['8. Networks']// fs.readdirSync("posts");
 
-  // console.log(posts);
-
+  
   return {
     props : {
       dataProp: 'This is my data',

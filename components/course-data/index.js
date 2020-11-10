@@ -19,9 +19,9 @@ export default {
 
         "2-denary-to-binary" : {
           
-          title: "1. Introduction",
+          title: "2 Denary to Binary",
           order: 0,
-          filePath: "1-introduction"
+          filePath: "2-denary-to-binary"
         }
       }
   },
@@ -29,7 +29,7 @@ export default {
   '8-networks' : {
     tags : ["GCSE", "iGCSE"], 
     title : "8 Networks",
-    path : "8-networks",
+    filePath : "8-networks",
     author : 'Leroy Salih',
     date : '2020-11-09',
     description : "Understand how devices communicate.",
