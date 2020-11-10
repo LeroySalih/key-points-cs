@@ -1,0 +1,79 @@
+import { useRouter } from 'next/router'
+
+import fs from 'fs';
+import path from 'path';
+
+import renderToString from 'next-mdx-remote/render-to-string'
+import hydrate from 'next-mdx-remote/hydrate'
+import matter from 'gray-matter'
+import Question from '../components/question'
+import Answer from '../components/answer'
+
+import Head from 'next/head';
+
+const handler  = ({ source, frontMatter}) => {
+  
+  // const content = hydrate(source, { components })
+
+  return (
+    <>
+    <Head>
+        <title>{//frontMatter.title
+              }</title>
+    </Head>
+    <div className="wrapper">
+      <div>Header goes here</div>
+      {content}
+    </div>
+    </>
+  )
+}
+
+export default handler;
+
+const components = { Question, Answer }
+
+export async function getStaticPaths () {
+  
+  console.log(`[getStaticPaths]::Running`)
+
+  // Read the files in the directory.
+  // const files = fs.readdirSync('posts');
+  
+  // remove the '.mdx'
+  const posts = ['networks']; //files.map((file) => file.replace('.mdx', ''));
+
+  const paths = posts.map((post) => ({params: {slug: post}}));
+  console.log(paths)
+  return {
+    // generate the paths
+    paths : paths,
+
+    // only allow specified paths
+    fallback: false
+  }
+}
+
+export async function getStaticProps ({params : {slug}}) {
+
+  console.log(`[getStaticProps]::Running ${slug}`);
+  const data = {};
+
+  // const source = fs.readFileSync(path.join(process.cwd(), 'posts', slug + '.mdx'));
+  
+  //const { content, data } = matter(source)
+  // const mdxSource = await renderToString(content, { components  })
+  return { props: { 
+      source: '', //mdxSource, 
+      frontMatter: data, 
+      // slug 
+    } 
+  };
+
+  // Get the query params
+  // return {
+  //   props: {
+  //     data: content.toString()
+  //   }
+  // }
+} 

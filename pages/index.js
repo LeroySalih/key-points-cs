@@ -1,65 +1,58 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Layout from '../components/layout';
+import useSWR from 'swr';
+import Link from 'next/link';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import { signIn, signOut, useSession } from 'next-auth/client'
+// import fs from 'fs';
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+const IndexPage = ({dataProp, courses}) => {
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+  const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+  const {data, error} = useSWR('/api/auth/session', fetcher);
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+  const [ session, loading ] = useSession()
+  
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+  if (error) return <div>failed to load</div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+  return <Layout>
+    <div>hello </div>
+     {courses.map((path, index) => <Link key={index} href={`/${path}`}><a>{path}</a></Link>)}
+    {!session && <>
+      Not signed in <br/>
+      <button onClick={signIn}>Sign in</button>
+    </>}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    {session && <>
+      Signed in as {session.user.name}, {session.id} <br/>
+      <button onClick={signOut}>Sign out</button>
+    </>}
+
+    {session && <>
+    <div>{session.user.uid}</div>
+    <div>{session.user.provider}</div>
+    </>}
+
+    </Layout>
 }
+
+
+// Use this to generate the page.
+export async function getStaticProps () {
+
+  //const paths = []
+
+  const courses = ['8. Networks']// fs.readdirSync("posts");
+
+  // console.log(posts);
+
+  return {
+    props : {
+      dataProp: 'This is my data',
+      courses
+    }
+  }
+}
+
+export default IndexPage;
