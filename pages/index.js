@@ -16,7 +16,7 @@ const IndexPage = ({dataProp, courses}) => {
 
   if (error) return <div>failed to load</div>
 
-  return <Layout>
+  return (<>
     <div>hello </div>
      {courses.map((path, index) => <Link key={index} href={`/${path}`}><a>{path}</a></Link>)}
     {!session && <>
@@ -33,8 +33,10 @@ const IndexPage = ({dataProp, courses}) => {
     <div>{session.user.uid}</div>
     <div>{session.user.provider}</div>
     </>}
+    </>
+    )
 
-    </Layout>
+    
 }
 
 
@@ -43,7 +45,7 @@ export async function getStaticProps () {
 
   //const paths = []
 
-  const courses = ['8. Networks']// fs.readdirSync("posts");
+  const courses = ['8-networks']// fs.readdirSync("posts");
 
   
   return {

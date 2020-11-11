@@ -1,8 +1,8 @@
 import {createContext} from 'react';
 
 const MyLightTheme = {
-  bgColor: "#ff00ff",
-  color: 'black',
+  bgColor: "#4747ff",
+  color: 'white',
   navbar : {
     font: 'Verdana',
     fontSize: "1.5rem"

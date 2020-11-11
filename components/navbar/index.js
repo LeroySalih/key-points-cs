@@ -13,7 +13,7 @@ const Navbar = () => {
   
 
   return (<div className={"navbar"}>
-    <span className="title">mrsalih-cs</span>
+    <span className="title">Comp-Sci: Key Points</span>
     <SignInStatus></SignInStatus>
     <style jsx>{`
       .navbar {

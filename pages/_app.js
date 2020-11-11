@@ -5,6 +5,8 @@ import { Provider } from 'next-auth/client'
 
 
 import ThemeContext, {MyLightTheme} from '../components/themes';
+import Navbar from '../components/navbar';
+import Layout from '../components/layout';
 
 const MyThemeLight = {
     backgroundColor: 'white',
@@ -13,8 +15,11 @@ const MyThemeLight = {
 function MyApp({ Component, pageProps }) {
   
   return <Provider session={pageProps.session}>
+
             <ThemeContext.Provider value={{theme: MyLightTheme }}>
-              <Component {...pageProps} />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </ThemeContext.Provider>
             
         </Provider>
