@@ -24,6 +24,8 @@ const LessonHeader = ({course}) => {
 
   .lesson-header {
     display: grid;
+    margin: 10px;
+    box-shadow: 0px 10px 10px #aaaaaa;
     background-color: rgb(1,142,230);
     grid-template-columns: 300px auto;
     grid-template-rows: 50px auto;

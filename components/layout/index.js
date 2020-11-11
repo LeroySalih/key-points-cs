@@ -13,7 +13,7 @@ const Layout = ({children}) => {
   </div>
   <style jsx>{`
   .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: auto;
     }
   `}
