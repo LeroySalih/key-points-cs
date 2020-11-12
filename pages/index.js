@@ -30,6 +30,13 @@ const IndexPage = ({dataProp, courses}) => {
         <div>
 
           A collection of resources to help you revise the subject and maximise your grades. 
+
+          <ul>
+            <li>Link materials to the course specification.  Target where you spend your time.</li>
+            <li>Videos to explain and worksheets to help you remember.</li>
+            <li>Revision sheets to test your understanding at the end of each module.</li>
+
+          </ul>
         </div>
       </div>
       <div className="pageHero">
