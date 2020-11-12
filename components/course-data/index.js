@@ -4,6 +4,7 @@ const networks = {
   title : "Computer Networks",
   metaDescription : "Revise the iGCSE Networks module for Oxford AQA using these key points.",
   id : "networks",
+  order: 8,
   author : 'Leroy Salih',
   date : '2020-11-09',
   description : "The modern world is built on connections of electronic devices.  Networks touch every aspect of our lives; our homes, our schools our vehicles are all becoming connected to various networks.  This module will help you revise the details of what is involved to allow these devices to communicate.",
@@ -185,6 +186,7 @@ const networks = {
 const number_systems =  {
   tags : ["GCSE", "iGCSE"], 
   title : "Number Systems",
+  order: 4, 
   metaDescription : "Revise the iGCSE Networks module for Oxford AQA using these key points.",
   id : "number_systems",
   author : 'Leroy Salih',

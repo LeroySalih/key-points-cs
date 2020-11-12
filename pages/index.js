@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/client'
+import courseData from '../components/course-data';
 // import fs from 'fs';
 
 const IndexPage = ({dataProp, courses}) => {
@@ -26,17 +27,22 @@ const IndexPage = ({dataProp, courses}) => {
     <div className="pageLayout">
       <div className="pageText">
         <h1>Computer Science</h1>
-        <h2>Key Points</h2>
+        <h2>Who am I?</h2>
+        <div>
+          My name is Leroy Salih, I teach Computer Science iGCSE in an international setting.  The aim of this site is to help pupils study and revise the topics within Computer Science.
+
+        </div>
+        <h2>Why Key Points?</h2>
         <div>
 
-          A collection of resources to help you revise the subject and maximise your grades. 
+          The idea behind key points is a that it is a collection of specific and targeted resources, designed to help you revise.  Material is key short and covers what you need to do well. 
 
           <ul>
-            <li>Link materials to the course specification.  Target where you spend your time.</li>
-            <li>Videos to explain and worksheets to help you remember.</li>
+            <li>Materials are linked to the course specification, so you can target where you spend your time.</li>
+            <li>Short videos to explain subjects with worksheets to help you test your understanding.</li>
             <li>Revision sheets to test your understanding at the end of each module.</li>
-
           </ul>
+
         </div>
       </div>
       <div className="pageHero">
@@ -44,6 +50,14 @@ const IndexPage = ({dataProp, courses}) => {
           width={800}
           height={640}
           src="/images/home-page-banner.png"/>
+      </div>
+
+      <div className="coursesPanel">
+        {
+           Object.values(courseData)
+            .sort((a, b) => (a.order > b.order) ? 1 : -1)
+            .map((course, index) => <CoursePanel course={course} key={index}/>) 
+        }
       </div>
         
 
@@ -65,6 +79,11 @@ const IndexPage = ({dataProp, courses}) => {
       display: flex;
       flex-direction: column;
       justify-items: center;
+    }
+
+    .coursesPanel {
+      display: flex;
+      flex-direction: row;
     }
     
     `}</style>
@@ -91,5 +110,16 @@ export async function getStaticProps () {
     }
   }
 }
+
+
+const CoursePanel = ({course}) => (
+  <div>
+    <Link href={`/${course.id}`}><a>{course.title}</a></Link>
+    <div>{ (course.description && course.description.length > 100) ?  course.description.substring(0, 100) + '...' : course.description}</div>
+    <div>
+    <Link href={`/${course.id}`}><a>Read more</a></Link>
+    </div>
+  </div>
+)
 
 export default IndexPage;

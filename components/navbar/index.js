@@ -4,6 +4,7 @@ import ThemeContext from '../themes';
 
 import styles from './index.module.css';
 
+import Image from 'next/image';
 
 import SignInStatus from './signInStatus';
 
@@ -13,7 +14,12 @@ const Navbar = () => {
   
 
   return (<div className={"navbar"}>
-    <span className="title">Comp-Sci: Key Points</span>
+    <div className="title">
+    <Image src="/images/site-logo.png" 
+      width={290} 
+      height={44} alt="Site Logo"/>
+    </div>
+    
     <SignInStatus></SignInStatus>
     <style jsx>{`
       .navbar {
