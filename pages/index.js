@@ -35,7 +35,7 @@ const IndexPage = ({dataProp, courses}) => {
         <h2>Why Key Points?</h2>
         <div>
 
-          The idea behind key points is a that it is a collection of specific and targeted resources, designed to help you revise.  Material is key short and covers what you need to do well. 
+          The idea behind key points is a that it is a collection of specific and targeted resources, designed to help you revise.  Material is intended to quickly cover the key points so that you can cover what we need to need to do well. 
 
           <ul>
             <li>Materials are linked to the course specification, so you can target where you spend your time.</li>
