@@ -61,7 +61,7 @@ class Auth {
     }
   }
 
-  login = async () => {
+  signIn = async () => {
     try {
       await this.userAgentApplication.loginPopup({
         scopes: config.scopes,
@@ -79,7 +79,7 @@ class Auth {
     }
   }
 
-  logout = async () => {
+  signOut = async () => {
     this.userAgentApplication.logout();
     this.currentUser.next(null);
   }
