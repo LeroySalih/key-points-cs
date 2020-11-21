@@ -18,7 +18,7 @@ class Auth {
       auth: {
         clientId: config.appId,
         redirectUri: "https://key-points-cs-51r4r0f33.vercel.app/"
-      },
+      }, 
       cache: { 
         cacheLocation: "localStorage",
         storeAuthStateInCookie: true
