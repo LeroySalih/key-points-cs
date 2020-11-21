@@ -17,9 +17,9 @@ class Auth {
     this.userAgentApplication = new UserAgentApplication({
       auth: {
         clientId: config.appId,
-        redirectUri: "http://localhost:3000"
+        redirectUri: "https://key-points-cs-51r4r0f33.vercel.app/"
       },
-      cache: {
+      cache: { 
         cacheLocation: "localStorage",
         storeAuthStateInCookie: true
       }
