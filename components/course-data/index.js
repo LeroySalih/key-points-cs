@@ -1,4 +1,5 @@
 
+
 const networks = {
   tags : ["GCSE", "iGCSE"], 
   title : "Computer Networks",
@@ -132,7 +133,7 @@ const networks = {
             title: "Watch this video",
             desc: "Watch this video that provides an overview of Networks before answering the questions below.",
             type: "video",
-            videoKey : "lX1zzyatX7c"
+            videoKey : "pXiV5QN1J2Q"
           },
 
           task2: {
@@ -166,7 +167,7 @@ const networks = {
             title: "Watch this video",
             desc: "Watch this video that provides an overview of Networks before answering the questions below.",
             type: "video",
-            videoKey : "lX1zzyatX7c"
+            videoKey : "szsLLFTZua0"
           },
 
           task2: {
@@ -199,6 +200,7 @@ const number_systems =  {
 
   lessons: 
     {
+      
       
       "introduction" : {
         title: "1. Introduction",
@@ -242,6 +244,28 @@ const number_systems =  {
             videoKey : "FBnWGDzlTo8"
           },
 
+          task2: {
+            id: 0,
+            order: 0,
+            title: "Complete this quiz",
+            desc: "Practice converting Binary Numbers to Denary using this quiz.",
+            type: "quiz",
+            quiz: [
+              {
+              id: 'q2',
+              type: "convertBinaryToDenary"
+            },
+            {
+              id: 'q3',
+              type: "convertBinaryToDenary"
+            },
+            {
+              id: 'q4',
+              type: "convertBinaryToDenary"
+            }
+          ]
+          },
+
           
 
         }
@@ -264,6 +288,28 @@ const number_systems =  {
             desc: "Watch this video that shows the algorith (method) used to convert denary numbers into binary.",
             type: "video",
             videoKey : "pC2b5ezOlMk"
+          },
+
+          task2: {
+            id: 0,
+            order: 0,
+            title: "Complete this quiz",
+            desc: "Practice converting denary Numbers to 4 bit binary using this quiz.",
+            type: "quiz",
+            quiz: [
+              {
+              id: 'q2',
+              type: "convertDenaryToBinary"
+            },
+            {
+              id: 'q3',
+              type: "convertDenaryToBinary"
+            },
+            {
+              id: 'q4',
+              type: "convertDenaryToBinary"
+            }
+          ]
           },
 
           
@@ -290,6 +336,28 @@ const number_systems =  {
             videoKey : "XRZqYTcn6T0"
           },
 
+          task2: {
+            id: 0,
+            order: 0,
+            title: "Complete this quiz",
+            desc: "Practice converting denary Numbers to 4 bit binary using this quiz.",
+            type: "quiz",
+            quiz: [
+              {
+              id: 'q2',
+              type: "addBinaryBinary"
+            },
+            {
+              id: 'q3',
+              type: "addBinaryBinary"
+            },
+            {
+              id: 'q4',
+              type: "addBinaryBinary"
+            }
+          ]
+          },
+
           
 
         }
@@ -314,6 +382,28 @@ const number_systems =  {
             videoKey : "GM5r6H82h54"
           },
 
+          task2: {
+            id: 0,
+            order: 0,
+            title: "Complete this quiz",
+            desc: "Practice multiplying binary Numbers.",
+            type: "quiz",
+            quiz: [
+              {
+              id: 'q2',
+              type: "multiplyBinary"
+            },
+            {
+              id: 'q3',
+              type: "multiplyBinary"
+            },
+            {
+              id: 'q4',
+              type: "multiplyBinary"
+            }
+          ]
+          },
+
           
 
         }
@@ -336,6 +426,28 @@ const number_systems =  {
             desc: "Watch this video that shows the algorithm (method) used to convert denary numbers into binary.",
             type: "video",
             videoKey : "14U-kYw3wD4"
+          },
+
+          task2: {
+            id: 0,
+            order: 0,
+            title: "Complete this quiz",
+            desc: "Practice multiplying binary Numbers.",
+            type: "quiz",
+            quiz: [
+              {
+              id: 'q2',
+              type: "divideBinary"
+            },
+            {
+              id: 'q3',
+              type: "divideBinary"
+            },
+            {
+              id: 'q4',
+              type: "divideBinary"
+            }
+          ]
           },
 
           
@@ -369,10 +481,11 @@ const number_systems =  {
       },
 
 
-
       
-    }
-}
+      
+    }  // end course
+} // end courses
+
 
 
 export default {

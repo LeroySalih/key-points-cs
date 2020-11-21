@@ -1,3 +1,5 @@
+import Quiz from '../../components/quiz';
+
 const Lesson = ({lesson}) => {
   if (!lesson) {
     return <div>No Lesson Found</div>
@@ -6,34 +8,48 @@ const Lesson = ({lesson}) => {
   return (<>
     <h3><a name={lesson.title}>{lesson.title}</a></h3>
     <div>{lesson.desc}</div>
+    {lesson.specDesc && (
+      <>
+        <h4>Specification Links</h4>
+        <div>This lesson has the following specification links.</div>
+        <SpecificationLink content={lesson.specDesc} />
+      </>
+    )}
     <div>
-      <h4>Specification Links</h4>
-      <div>This lesson has the following specification links.</div>
-      <SpecificationLink content={lesson.specDesc} />
-      
+    {lesson.tasks && (
+      <>
       <h4>Tasks</h4>
-      {lesson.tasks && Object.values(lesson.tasks).map((task, index) => {
-        console.log(task)
-        if (task.type == 'video') {
+      { 
+        Object.values(lesson.tasks).map((task, index) => {
           return (
             <>
-            <h5>{index + 1}. {task.title}</h5>
-            <div>{task.desc}</div>
-            <div className="displayVideo">
-            <iframe 
-              width="560" 
-              height="315" 
-              src={`https://www.youtube.com/embed/${task.videoKey}`}
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen></iframe>
-              </div>
-            </>
-          )
-        } 
-          
-        
-      })}
+            <h4>{task.title}</h4>
+          <div>{task.desc}</div>
+          {task.type == 'quiz' && <Quiz key={index} quiz={task.quiz}></Quiz>}
+
+          {task.type == 'video' && <div className="displayVideo">
+              <iframe 
+                width="560" 
+                height="315" 
+                src={`https://www.youtube.com/embed/${task.videoKey}`}
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen>
+
+                </iframe>
+                </div>
+          } 
+          </>
+          );
+
+
+        })
+      }
+      </>
+    )
+      
+    // end tasks
+    } 
       
     </div>
     <style jsx>{`

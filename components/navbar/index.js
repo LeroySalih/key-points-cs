@@ -8,9 +8,12 @@ import Image from 'next/image';
 
 import SignInStatus from './signInStatus';
 
+import Auth, {AuthContext} from '../../components/auth';
+
 const Navbar = () => {
 
   const {theme} = useContext(ThemeContext);
+  const {user} = useContext(AuthContext);
   
 
   return (<div className={"navbar"}>
@@ -20,7 +23,8 @@ const Navbar = () => {
       height={44} alt="Site Logo"/>
     </div>
     
-    <SignInStatus></SignInStatus>
+    <SignInStatus user={user}></SignInStatus>
+    
     <style jsx>{`
       .navbar {
         display: flex;

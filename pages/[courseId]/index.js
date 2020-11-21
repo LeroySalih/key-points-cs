@@ -40,8 +40,8 @@ const CoursePage = ({course}) => {
         <div className="sidebarMenu">
           {course.title}
 
-          {Object.values(course.lessons).map((lesson) => 
-            <a className="sidebarLink" href={`#${lesson.title}`}>{lesson.title}</a>
+          {Object.values(course.lessons).map((lesson, index) => 
+            <a key={index} className="sidebarLink" href={`#${lesson.title}`}>{lesson.title}</a>
           )}
           
         </div>
@@ -54,7 +54,7 @@ const CoursePage = ({course}) => {
       {course && course.keywords && Object.keys(course.keywords)
         .sort((a, b) => (a > b) ? 1 : -1)
         .slice(0, 3)
-        .map((keyword) => <><li><b>{keyword}</b></li><div>{course.keywords[keyword]}</div></>)
+        .map((keyword, index) => <div key={index}><li><b>{keyword}</b></li><div>{course.keywords[keyword]}</div></div>)
         }
       { course && course.keywords && Object.keys(course.keywords).length > 4 && (
         <Link href={`/${course.id}/keywords`}><a>see more...</a></Link>
