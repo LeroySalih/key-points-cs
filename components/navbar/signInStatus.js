@@ -4,6 +4,7 @@ import Auth from '../../components/auth';
 
 const SignInStatus = ({user}) => {
   
+  console.log("User::", user);
   const handleSignOut = () => {
     Auth.signOut();
   }
