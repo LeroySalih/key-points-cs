@@ -1,6 +1,7 @@
 import { UserAgentApplication } from 'msal';
 import config from '../../../../components/config';
 
+/*
 const client = new UserAgentApplication({
   auth: {
     clientId: config.appId,
@@ -11,6 +12,7 @@ const client = new UserAgentApplication({
     storeAuthStateInCookie: true
   }
 });
+*/
 
 const callback = async (req, res) => {
 
