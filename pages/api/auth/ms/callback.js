@@ -1,4 +1,5 @@
 import { UserAgentApplication } from 'msal';
+import config from '../../../../components/config';
 
 const client = new UserAgentApplication({
   auth: {
