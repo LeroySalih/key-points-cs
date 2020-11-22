@@ -17,14 +17,14 @@ class Auth {
     this.userAgentApplication = new UserAgentApplication({
       auth: {
         clientId: config.appId,
-        redirectUri: "https://key-points-cs-51r4r0f33.vercel.app/"
+        redirectUri: "https://key-points-cs-51r4r0f33.vercel.app/api/auth/ms/callback"
       }, 
       cache: { 
         cacheLocation: "localStorage",
         storeAuthStateInCookie: true
       }
     });
-
+ 
     // attempt to load the token from msal.
     this.token = this.userAgentApplication.getAccount();
 
