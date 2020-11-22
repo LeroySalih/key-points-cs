@@ -70,7 +70,8 @@ class Auth {
       };
 
       function authCallback(error, response) {
-        //handle redirect response
+        //handle redirect response 
+        console.log("Redirect detected")
       }
 
       this.userAgentApplication.handleRedirectCallback(authCallback);
