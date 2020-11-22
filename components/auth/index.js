@@ -17,7 +17,7 @@ class Auth {
     this.userAgentApplication = new UserAgentApplication({
       auth: {
         clientId: config.appId,
-        redirectUri: "https://key-points-cs-aehbt9fkg.vercel.app/api/auth/ms/callback"
+        redirectUri: "https://comp-sci-keypoints.com/api/auth/ms/callback"
       }, 
       cache: { 
         cacheLocation: "localStorage",
