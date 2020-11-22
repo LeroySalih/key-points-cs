@@ -17,7 +17,7 @@ class Auth {
     this.userAgentApplication = new UserAgentApplication({
       auth: {
         clientId: config.appId,
-        redirectUri: "HTTP://localhost:3000/api/auth/ms/callback"
+        redirectUri: "https://revise-cs.co.uk/api/auth/ms/callback"
       }, 
       cache: { 
         cacheLocation: "localStorage",
