@@ -17,7 +17,7 @@ class Auth {
     this.userAgentApplication = new UserAgentApplication({
       auth: {
         clientId: config.appId,
-        redirectUri: "https://key-points-cs-51r4r0f33.vercel.app/api/auth/ms/callback"
+        redirectUri: "HTTP://localhost:3000/api/auth/ms/callback"
       }, 
       cache: { 
         cacheLocation: "localStorage",
@@ -63,10 +63,21 @@ class Auth {
 
   signIn = async () => {
     try {
-      await this.userAgentApplication.loginPopup({
+
+      const loginRequest =  {
         scopes: config.scopes,
         prompt: "select_account"
-      });
+      };
+
+      function authCallback(error, response) {
+        //handle redirect response
+      }
+
+      this.userAgentApplication.handleRedirectCallback(authCallback);
+
+      await this.userAgentApplication.loginRedirect(loginRequest);
+      
+      
       await this.getUserProfile();
     }
     catch(err) {
